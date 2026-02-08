@@ -26,6 +26,20 @@ mixer.music.play(-1)
 
 pygame.mixer.set_num_channels(10)
 
+sounds = {
+    "droplet": pygame.mixer.Sound(get_sound_path("droplet.mp3")),
+    "droplet2": pygame.mixer.Sound(get_sound_path("droplet2.mp3")),
+    "bells": pygame.mixer.Sound(get_sound_path("bells.mp3")),
+    "babycry": pygame.mixer.Sound(get_sound_path("babycry.mp3")),
+    "phone": pygame.mixer.Sound(get_sound_path("phone.mp3")),
+    "dial": pygame.mixer.Sound(get_sound_path("dial.mp3")),
+    "womancry": pygame.mixer.Sound(get_sound_path("womancry.mp3")),
+    "oldwhatever": pygame.mixer.Sound(get_sound_path("oldwhatever.mp3")),
+    "belllong": pygame.mixer.Sound(get_sound_path("belllong.mp3")),
+    "windbird": pygame.mixer.Sound(get_sound_path("windbird.mp3")),
+    "oldrant": pygame.mixer.Sound(get_sound_path("oldrant.mp3")),
+}
+
 window = pygame.display.set_mode((500, 500))
 window.fill((255, 255, 255))
 
@@ -94,41 +108,30 @@ def path(x, y):
         color = (color[0], color[1], color[2]-cc)
 
     if cc == 5:
+        rand = random.randint(1, 10)
         if random.randint(1, 10) == 1:
-            pygame.mixer.Channel(0).play(
-                pygame.mixer.Sound(get_sound_path("droplet.mp3")))
-
-        elif random.randint(1, 10) == 2:
-            pygame.mixer.Channel(0).play(
-                pygame.mixer.Sound(get_sound_path("droplet2.mp3")))
-        elif random.randint(1, 10) == 3:
-            pygame.mixer.Channel(1).play(
-                pygame.mixer.Sound(get_sound_path("bells.mp3")))
+            pygame.mixer.Channel(0).play(sounds["droplet"])
+        elif rand == 2:
+            pygame.mixer.Channel(0).play(sounds["droplet2"])
+        elif rand == 3:
+            pygame.mixer.Channel(1).play(sounds["bells"])
 
         if random.randint(1, 1000) == 1:
-            pygame.mixer.Channel(3).play(
-                pygame.mixer.Sound(get_sound_path("babycry.mp3")))
+            pygame.mixer.Channel(3).play(sounds["babycry"])
         if random.randint(1, 1000) == 1:
-            pygame.mixer.Channel(5).play(
-                pygame.mixer.Sound(get_sound_path("phone.mp3")))
+            pygame.mixer.Channel(5).play(sounds["phone"])
         if random.randint(1, 1000) == 1:
-            pygame.mixer.Channel(5).play(
-                pygame.mixer.Sound(get_sound_path("dial.mp3")))
+            pygame.mixer.Channel(5).play(sounds["dial"])
         if random.randint(1, 1000) == 1:
-            pygame.mixer.Channel(3).play(
-                pygame.mixer.Sound(get_sound_path("womancry.mp3")))
+            pygame.mixer.Channel(3).play(sounds["womancry"])
         if random.randint(1, 500) == 1:
-            pygame.mixer.Channel(2).play(
-                pygame.mixer.Sound(get_sound_path("oldwhatever.mp3")))
+            pygame.mixer.Channel(2).play(sounds["oldwhatever"])
         if random.randint(1, 200) == 1:
-            pygame.mixer.Channel(1).play(
-                pygame.mixer.Sound(get_sound_path("belllong.mp3")))
+            pygame.mixer.Channel(1).play(sounds["belllong"])
         if random.randint(1, 200) == 1:
-            pygame.mixer.Channel(4).play(
-                pygame.mixer.Sound(get_sound_path("windbird.mp3")))
+            pygame.mixer.Channel(4).play(sounds["windbird"])
         if random.randint(1, 500) == 1:
-            pygame.mixer.Channel(3).play(
-                pygame.mixer.Sound(get_sound_path("oldrant.mp3")))
+            pygame.mixer.Channel(3).play(sounds["oldrant"])
 
     player.fill(color)
 
@@ -190,7 +193,6 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-    pygame.display.update()
 
     rot += 0.001
     if rot >= 360:
@@ -201,4 +203,5 @@ while True:
     window.blit(rotated, rect)
 
     check()
+    pygame.display.update()
     clock.tick(240)
