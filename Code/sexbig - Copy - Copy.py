@@ -208,3 +208,5 @@ while True:
     window.blit(rotated, rect)
 
     check()
+
+input("Press Enter to exit...")
