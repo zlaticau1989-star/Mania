@@ -1,0 +1,2 @@
+# Mania
+Mania simulation
